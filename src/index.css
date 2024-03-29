@@ -1,13 +1,76 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: "Alata";
+  font-display: swap;
+  src: url("./assets/Font/Alata/Alata-Regular.ttf") format("truetype");
+  /* Add other font properties if needed (e.g., font-weight, font-style) */
+}
+@font-face {
+  font-family: "Josefin Sans";
+  font-display: swap;
+  src: url("./assets/Font/Josefin_Sans/static/JosefinSans-Light.ttf");
+  font-weight: 300;
+  /* Add other font properties if needed (e.g., font-weight, font-style) */
+}
+.SectionOne {
+  @apply max-w-[100%] text-white  min-h-[650px] bg-no-repeat bg-cover bg-center md:bg-[url(./assets/images/desktop/image-hero.jpg)] bg-[url(./assets/images/mobile/image-hero.jpg)];
+}
+.SectionOne > div,
+.SectionTwo,
+.SectionThree {
+  @apply mx-auto w-[90%] md:w-[80%];
+}
+.SectionTwo {
+  @apply relative flex-wrap text-center md:flex md:text-start;
+}
+.imgsMobile {
+  @apply flex flex-col justify-between gap-10 md:gap-2 md:flex-wrap md:flex-row;
+}
+.imgsMobile > div {
+  @apply cursor-pointer transition-all duration-500 text-white relative md:w-[23%]  max-w-[654px] max-h-[240px] md:max-w-none md:max-h-none;
+}
+.imgsMobile > div > img {
+  @apply transition-all duration-500 -z-20 brightness-50 object-contain w-full  md:brightness-[.7];
+}
+.imgsMobile > div > img:nth-of-type(1) {
+  @apply md:hidden;
+}
+.imgsMobile > div > img:nth-of-type(2) {
+  @apply hidden md:block;
+}
+.imgsMobile > div:hover > img {
+  @apply opacity-45;
+}
+.imgsMobile > div:hover > p {
+  @apply text-black;
+}
+.imgsMobile > div > p {
+  @apply absolute bottom-0 left-0 z-20 flex items-end h-full px-5 pb-3 text-2xl uppercase md:left-5 md:bottom-5 md:text-3xl;
+}
+.btn {
+  @apply self-center px-10 py-2 my-10 text-2xl uppercase border-2 border-black hover:bg-black hover:text-white font-Alata w-fit;
+}
+.footerimg {
+  @apply flex gap-5 order-3 justify-center  mt-10 md:mt-0  md:order-none flex-row-reverse md:flex-row md:justify-end w-full md:w-[50%];
+}
+.footerimg img {
+  @apply relative cursor-pointer  hover:after:w-5 w-[24px] h-[24px];
+}
+.footerimg p {
+  @apply relative cursor-pointer hover:after:w-[24px];
+}
+.footerimg > p::after {
+  @apply content-[""] block relative -bottom-1   w-0 h-1 rounded-full bg-white transition-all duration-300 ease-in-out;
+}
+nav > p {
+  @apply w-fit relative font-semibold cursor-pointer hover:after:w-[25px];
+}
+nav > p::after {
+  @apply content-[""]  absolute -bottom-[6px] left-1/2 -translate-x-1/2  w-0 h-1 rounded-full bg-white transition-all duration-300 ease-in-out;
+}
+.Open::after {
+  @apply content-[""] z-30  transition-all fixed top-0 left-1/2 -translate-x-1/2 w-[120%] h-full bg-black;
 }
